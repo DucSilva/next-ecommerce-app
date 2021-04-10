@@ -17,7 +17,8 @@ function Navbar() {
     }
 
     React.useEffect(() => {
-        if(Object.keys(auth).length === 0) router.push('/signin')
+        if(Object.keys(auth).length !== 0) router.push("/")
+        else router.push("/signin")
     }, [auth])
 
     const handleLogout = () => {
