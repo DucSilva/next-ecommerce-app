@@ -1,6 +1,12 @@
 import Link from 'next/link';
+import React from 'react';
+import { DataContext } from '../../store/GlobalState';
+import { addToCart } from '../../store/Action';
 
 const ProductItem = ({product}) => {
+
+    const {state, dispatch} = React.useContext(DataContext);
+    const { cart } = state;
 
     const renderLinkItem = () => {
         return(
@@ -8,7 +14,11 @@ const ProductItem = ({product}) => {
                 <Link href={`product/${product._id}`}>
                     <a className="btn btn-info" style={{marginRight: 5, flex: 1}}>View</a>
                 </Link>
-                <button className="btn btn-success"  style={{marginLeft: 5, flex: 1}}>
+                <button 
+                    className="btn btn-success"  
+                    style={{marginLeft: 5, flex: 1}}
+                    onClick={() => dispatch(addToCart(product, cart))}
+                >
                     Buy
                 </button>
             </>
