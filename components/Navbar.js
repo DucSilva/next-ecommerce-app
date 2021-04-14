@@ -9,7 +9,7 @@ import Cookie from 'js-cookie';
 function Navbar() {
     const router = useRouter();
     const { state, dispatch } = React.useContext(DataContext);
-    const {auth} = state;
+    const {auth, cart} = state;
     const isActive = (r) => {
         if (r === router?.pathname) {
             return " active"
@@ -63,7 +63,7 @@ function Navbar() {
                     <li className="nav-item">
                         <Link href="/cart">
                             <a className={"nav-link" + isActive('/cart')}>
-                                <i className="fa fa-shopping-cart" aria-hidden="true">
+                                <i className="fa fa-shopping-cart position-relative" aria-hidden="true">
                                     <span className="position-absolute"
                                         style={{
                                             padding: '3px 6px',
@@ -74,7 +74,7 @@ function Navbar() {
                                             color: 'white',
                                             fontSize: '14px'
                                         }}>
-                                        {/* {cart.length} */}
+                                        {cart.length}
                                     </span>
                                 </i> Cart
                         </a>
