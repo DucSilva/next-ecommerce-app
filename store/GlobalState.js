@@ -5,7 +5,7 @@ import { getData } from '../utils/fetchData';
 export const DataContext = React.createContext();
 
 export const DataProvider = ({ children }) => {
-    const initialState = { notify: {}, auth: {}, cart: [] };
+    const initialState = { notify: {}, auth: {}, cart: [], modal: {} };
     const [state, dispatch] = React.useReducer(reducers, initialState)
 
     const { cart } = state;
